@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jquery</title>
+</head>
+<body>
+  <h1>Intro Jquery</h1>
+  <h1>intro 2</h1>
+
+  <form id="formulario1" action="/data/procesamiento_formulario.php" method="POST">
+    <label for="">RUT</label>
+    <input type="text" name="rut" id="rut"> <br>
+    <label for="">Nombre</label>
+    <input id="nombre_usuario" type="text"><br>
+    <input type="submit">
+    <hr>
+  </form>
+
+  <img id="foto1" src="https://picsum.photos/id/684/200/200" style="position:relative" alt="">
+  <br>
+  <button id="boton_foto_1">Has click</button>
+  
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit dolorem delectus perferendis dolore quo excepturi enim cumque, quos est tempore corrupti quaerat vero, cum eos eum vitae minima inventore sed?
+  Deleniti fugiat modi nisi, maxime explicabo sunt, doloremque quasi facilis nihil voluptatem distinctio saepe, quia reiciendis vitae quas aspernatur placeat omnis at dolorem veniam delectus? Odit provident beatae ratione doloremque?
+  Itaque vel molestias aliquid, quidem quis sint consequatur alias placeat voluptates repudiandae harum eaque rem nemo, quisquam atque. Consequatur quibusdam animi labore ut officiis sed exercitationem sunt amet. Inventore, vitae.
+  Magnam cumque saepe in quasi nihil facilis maiores laborum nemo? Sapiente quasi natus magnam at illum quas facere! Facere exercitationem harum aperiam. Explicabo tenetur repudiandae excepturi odio fuga doloribus blanditiis!</p>
+  <script src="assets/js/jquery_3.5.1.js"></script>
+  <script>
+    
+
+    $(function(){
+      //eventos mouse _ click 
+      $("h1").click(function(){
+        //ejecutar mi accion
+        $('h1').css({color:'red', fontSize:"3rem"});
+      });
+      //evento teclado -
+      $("#nombre_usuario").keyup(function(){
+        var valor = $(this).val();
+        if(valor.length >=5){
+          //alert("excediste los 5 caracteres ")
+        }
+        console.log(valor.length);
+      });
+
+      //evento form
+      $("#formulario1").submit(function(event){
+        alert("has hecho click en enviar formulario");
+        event.preventDefault();
+        //
+        alert("hago alguna otra accion por ej validar");
+        //
+        this.submit();
+      });
+
+      //metodo animate
+      $("#boton_foto_1").click(function(){
+        var posicion_foto_izquierda = $("#foto1").offset().left;
+        console.log(posicion_foto_izquierda);
+        if(posicion_foto_izquierda ===8){
+          $("#foto1").animate({
+          left:'500px',
+          });
+        }else{
+          $("#foto1").animate({
+          left:'0px',
+          });
+        }
+        
+      })
+    });
+
+  </script>
+</body>
+</html>
